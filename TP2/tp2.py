@@ -1,3 +1,8 @@
+"""
+TP2
+PETIT Antoine & WISSOCQ Sarah
+Méthode des moindres carrés
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -100,8 +105,8 @@ plt.close('all')
 line1, = plt.plot(x,y, label ='a*x + b', color="blue")
 line2, = plt.plot(x,y2, label = 'Resultat moindreCarre',color="green")
 plt.plot(t,p,'.',color="red")
-plt.legend(handles = [line1,line2])
-plt.title('Tp1')
+plt.legend([line1,line2])
+plt.title('Tp2')
 plt.xlabel('Temps (s)')
 plt.ylabel('Position (m)')
 plt.show()
