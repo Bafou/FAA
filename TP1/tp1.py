@@ -1,3 +1,8 @@
+"""
+TP1 
+PETIT Antoine & WISSOCQ Sarah
+Représentation des données
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 import math

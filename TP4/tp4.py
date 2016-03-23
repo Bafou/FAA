@@ -90,29 +90,35 @@ x0=np.array(lire('x0.txt'))
 y0=np.array(lire('y0.txt'))
 N=100
 x=np.linspace(4,15,N)
-mat = creaMatricePuissanceM(x0,N,10)
+mat0_1= creaMatricePuissanceM(x0,N,1)
+mat0_10 = creaMatricePuissanceM(x0,N,10)
+mat0_20 = creaMatricePuissanceM(x0,N,20)
 
-print mat
-print "________________________________________________________________________________"
 
-m = moindreCarre(mat,y0)
+m0_1 = moindreCarre(mat0_1,y0)
+m0_10 = moindreCarre(mat0_10,y0)
+m0_20 = moindreCarre(mat0_20,y0)
 
-print m
-aff = matToFonc(m,x0)
-print "________________________________________________________________________________"
+aff0_1 = matToFonc(m0_1,x0)
+aff0_10 = matToFonc(m0_10,x0)
+aff0_20 = matToFonc(m0_20,x0)
+
 
 x1=np.array(lire('x1.txt'))
 y1=np.array(lire('y1.txt'))
 N1=300
-mat1 = creaMatricePuissanceM(x1,N1,10)
+mat1_1 = creaMatricePuissanceM(x1,N1,1)
+mat1_10 = creaMatricePuissanceM(x1,N1,10)
+mat1_20 = creaMatricePuissanceM(x1,N1,20)
 
-print mat1
-print "________________________________________________________________________________"
+m1_1 = moindreCarre(mat1_1,y1)
+m1_10 = moindreCarre(mat1_10,y1)
+m1_20 = moindreCarre(mat1_20,y1)
 
-m1 = moindreCarre(mat1,y1)
 
-print m1
-aff1 = matToFonc(m1,x1)
+aff1_1 = matToFonc(m1_1,x1)
+aff1_10 = matToFonc(m1_10,x1)
+aff1_20 = matToFonc(m1_20,x1)
 
 
 x2=np.array(lire('x2.txt'))
@@ -120,87 +126,80 @@ y2=np.array(lire('y2.txt'))
 x2.sort()
 y2.sort()
 N2=300
-mat2 = creaMatricePuissanceM(x2,N2,10)
-
-print mat2
-print "________________________________________________________________________________"
-
-m2 = moindreCarre(mat2,y2)
-
-print m2
-aff2 = matToFonc(m2,x2)
-
-# Calcul des performances
-"""
-z = np.ones(len(x))
-
-x1 = np.zeros((2, N))
-x1[1,:] = t
-x1[0,:] = z
+mat2_1 = creaMatricePuissanceM(x2,N2,1)
+mat2_10 = creaMatricePuissanceM(x2,N2,10)
+mat2_20 = creaMatricePuissanceM(x2,N2,20)
 
 
+m2_1 = moindreCarre(mat2_1,y2)
+m2_10 = moindreCarre(mat2_10,y2)
+m2_20 = moindreCarre(mat2_20,y2)
 
-m=moindreCarre(x1,p)
+aff2_1 = matToFonc(m2_1,x2)
+aff2_10 = matToFonc(m2_10,x2)
+aff2_20 = matToFonc(m2_20,x2)
 
-y2= m[1]*x + m[0]
-
-# Descente de gradient 
-
-
-
-# Affichage 
-
-t2 = np.array([b,a], float)
-t3 = np.array(m, float)
-
-ab1 = mesureAbs(x1,t2,p,N)
-norm1_1 = mesureNormal1(x1,t2,p,N)
-norm2_1 = mesureNormal2(x1,t2,p,N)
-inf1 = mesureLinf(x1,t2,p)
-ab2 = mesureAbs(x1,t3,p,N)
-norm1_2 = mesureNormal1(x1,t3,p,N)
-norm2_2 = mesureNormal2(x1,t3,p,N)
-inf2 = mesureLinf(x1,t3,p)
-teta=np.array([2,3], float)
-#grad = descenteGradient(teta,x1,p,N)
-
-print "-------------------Erreur-------------------------------------------"
-print ""
-print "Jlabs =", ab1
-print "Jl1 =", norm1_1
-print "Jl2 =", norm2_1
-print "Jlinf =", inf1
-print ""
-print "-------------------Erreur avec moindreCarre-------------------------"
-print ""
-print "Matrice moindreCarre : ", m
-print ""
-print "Jlabs =", ab2
-print "Jl1 =", norm1_2
-print "Jl2 =", norm2_2
-print "Jlinf =", inf2
-print ""
-print "-------------------Difference des erreurs---------------------------"
-print ""
-print "Diff(Jlabs1) =", ab1 - ab2
-print "Diff(Jl1) =", norm1_1 - norm1_2
-print "Diff(Jl2) =", norm2_1 - norm2_2
-print "Diff(Jlinf) =", inf1 - inf2
-print "-------------------Descente gradient---------------------------"
-print ""
-print "grad =", grad
-"""
 # Affichage des donnees
 
 plt.close('all')
-#line1, = plt.plot(x,y)
-#line2, = plt.plot(x,y2, label = 'Resultat moindreCarre',color="green")
-plt.plot(x2,y2,'.',color="red")
-plt.plot(x2,aff2)
-#"plt.legend(handles = [line1,line2])
-plt.title('Tp4')
-plt.xlabel('Temps (s)')
-plt.ylabel('Position (m)')
+#Affichage jeu de donne 1
+plt.plot(x0,y0,'.',color="red")
+plt.plot(x0,aff0_1)
+plt.title('Tp4 : Jeu de donnee 1; Polynome de degre 1')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x0,y0,'.',color="red")
+plt.plot(x0,aff0_10)
+plt.title('Tp4 : Jeu de donnee 1; Polynome de degre 10')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x0,y0,'.',color="red")
+plt.plot(x0,aff0_20)
+plt.title('Tp4 : Jeu de donnee 1; Polynome de degre 20')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+#Affichage jeu de donne 2
+
+plt.plot(x1,y1,'.',color="red")
+plt.plot(x1,aff1_1)
+plt.title('Tp4 : Jeu de donnee 2; Polynome de degre 1')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x1,y1,'.',color="red")
+plt.plot(x1,aff1_10)
+plt.title('Tp4 : Jeu de donnee 2; Polynome de degre 10')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x1,y1,'.',color="red")
+plt.plot(x1,aff1_20)
+plt.title('Tp4 : Jeu de donnee 2; Polynome de degre 20')
+plt.xlabel('x')
+plt.ylabel('y')
 plt.show()
 
+#Affichage jeu de donne 3
+
+plt.plot(x2,y2,'.',color="red")
+plt.plot(x2,aff2_1)
+plt.title('Tp4 : Jeu de donnee 3; Polynome de degre 1')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x2,y2,'.',color="red")
+plt.plot(x2,aff2_10)
+plt.title('Tp4 : Jeu de donnee 3; Polynome de degre 10')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+plt.plot(x2,y2,'.',color="red")
+plt.plot(x2,aff2_20)
+plt.title('Tp4 : Jeu de donnee 3; Polynome de degre 20')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
 
