@@ -23,4 +23,6 @@ Y_test =  Y[(taille//10)*9:]
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X_learn, Y_learn)
 
-tree.export_graphviz(clf, "test.dot")
+print( clf.predict(X_test))
+
+#tree.export_graphviz(clf, "test.dot")

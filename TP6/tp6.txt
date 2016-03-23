@@ -1,0 +1,32 @@
+# Antoine Petit & Sarah Wissocq
+
+2 Layers
+#################### Building the DNN #####################
+########## Declaring weights of layer 1 and 2 ##########
+# Layer 1
+W1 = weight_variable([784,69])
+#Layer 2
+W2 = weight_variable([69,10])
+b1 = bias_variable([69])
+b2 = bias_variable([10])
+
+########## Building the intermediate error ##########
+# Layer 1
+a1 = tf.matmul(x,W1) + b1
+#Layer 2
+a2 = tf.matmul(a1,W2) + b2
+y_out = tf.nn.softmax(a2)
+
+# Loss cross entropy
+cross_entropy = - tf.reduce_sum(y_ * tf.log(y_out))
+# with a L2 regularization
+regularizer = tf.nn.l2_loss(W1) + tf.nn.l2_loss(b1)
+LAMBDA = 0.0001
+
+loss = cross_entropy# + LAMBDA*regularizer
+
+
+
+
+regularizer permet d'éviter le sur-aprentissage
+
