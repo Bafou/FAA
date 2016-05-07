@@ -12,13 +12,13 @@ def lire(chemin):
 	return res
 	
 def lire_fichier_poids(chemin) :
-    fichier = open(chemin,'r')
-    (dim1,dim2) = ([],[])
-    for ligne in fichier :
-        (taille,poids) = ligne.split()
-        dim1.append(float(taille))
-        dim2.append(float(poids))
-    return (dim1,dim2) 
+   fichier = open(chemin,'r')
+   (dim1,dim2) = ([],[])
+   for ligne in fichier :
+	  (taille,poids) = ligne.split()
+	  dim1.append(float(taille))
+	  dim2.append(float(poids))
+   return (dim1,dim2) 
 
 def mesureAbs(x,teta,y,N):
 	vecteur = y - np.dot(x.T,teta)
@@ -50,20 +50,20 @@ def calcAlpha(t,valDef=1.):
 	return alpha
 	
 def calcul_theta_suivant_sigmoid(iteration,theta):
-    # Calcul du terme X(Y - X^T*θ_prec)
-    tmp = np.dot(x, y - sigmoid(np.dot(x.T, theta)))
+   # Calcul du terme X(Y - X^T*θ_prec)
+   tmp = np.dot(x, y - sigmoid(np.dot(x.T, theta)))
 
-    # Calcul de θ = θ_prec + α_t * 1/N * X(Y - X^T*θ_prec)
-    return np.add(theta, np.dot(calcAlpha(iteration) * (1.0 / n), tmp))
-    
+   # Calcul de θ = θ_prec + α_t * 1/N * X(Y - X^T*θ_prec)
+   return np.add(theta, np.dot(calcAlpha(iteration) * (1.0 / n), tmp))
+   
 def sigmoid(X):
-    A = 0.95
-    b = -np.mean(X[0])
+   A = 0.95
+   b = -np.mean(X[0])
 
-    return 1.0 / (1.0 + np.exp((np.dot(A, X) + b)))
+   return 1.0 / (1.0 + np.exp((np.dot(A, X) + b)))
 
 def descenteGradientSigmoide(teta,x,y,N,epsilon=0.001):
-    t=1
+   t=1
 
 	list_temps = []
 	list_mesureNormal2 = []
@@ -123,10 +123,10 @@ h_taille = h[:, 0]  # Tailles des hommes
 f_poids = f[:, 1]   # Poids des femmes
 h_poids = h[:, 1]   # Poids des hommes
 
-x = np.append(f_taille, h_taille)               # Tailles
-y = np.append(np.ones(nb_f), np.zeros(nb_h))    # Classes (1 pour femme, 0 pour homme)
+x = np.append(f_taille, h_taille)			# Tailles
+y = np.append(np.ones(nb_f), np.zeros(nb_h))   # Classes (1 pour femme, 0 pour homme)
 
-x = np.vstack((x, np.ones(len(x))))             
+x = np.vstack((x, np.ones(len(x))))		  
 
 n = len(x)
 

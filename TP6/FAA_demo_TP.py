@@ -93,17 +93,17 @@ list_iteration = []
 
 #################### Optimization #####################
 for i in range(5000):
-    # Creating the mini-batch
-    batch_xs, batch_ys = mnist.train.next_batch(20)
-    # running one step of the optimization method on the mini-batch
-    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
-    if i%100 == 0:
-        # train error computation
-        acuracy = sess.run(accuracy, feed_dict={x: mnist.train.images, y_: mnist.train.labels})
-        print "###################################################"
-        print "step %d, training err %g"%(i, 1-acuracy)
-        list_iteration.append(i)
-        list_err_test.append(1-acuracy)
+   # Creating the mini-batch
+   batch_xs, batch_ys = mnist.train.next_batch(20)
+   # running one step of the optimization method on the mini-batch
+   sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
+   if i%100 == 0:
+	  # train error computation
+	  acuracy = sess.run(accuracy, feed_dict={x: mnist.train.images, y_: mnist.train.labels})
+	  print "###################################################"
+	  print "step %d, training err %g"%(i, 1-acuracy)
+	  list_iteration.append(i)
+	  list_err_test.append(1-acuracy)
 
 acuracy_test = sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels})
 print "test accuracy %g"%(acuracy)
