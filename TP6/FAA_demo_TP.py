@@ -44,7 +44,7 @@ b5 = bias_variable([10])
 ########## Building the intermediate error ##########
 # Layer 1
 a1 = tf.matmul(x,W1) + b1
-#Layer 2
+#Layer 2 changer matmul en sigmoid etc
 a2 = tf.matmul(a1,W2) + b2
 
 a3 = tf.matmul(a2,W3) + b3
@@ -66,7 +66,7 @@ loss = cross_entropy + LAMBDA*regularizer
 
 
 #################### Training method #####################
-# Training with gradient descent
+# Training with gradient descent remplacer GradientDescentOptimizer par Ada bidule
 train_step = tf.train.GradientDescentOptimizer(0.01).minimize(loss)
 
 
@@ -98,12 +98,12 @@ for i in range(5000):
    # running one step of the optimization method on the mini-batch
    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
    if i%100 == 0:
-	  # train error computation
-	  acuracy = sess.run(accuracy, feed_dict={x: mnist.train.images, y_: mnist.train.labels})
-	  print "###################################################"
-	  print "step %d, training err %g"%(i, 1-acuracy)
-	  list_iteration.append(i)
-	  list_err_test.append(1-acuracy)
+    # train error computation
+    acuracy = sess.run(accuracy, feed_dict={x: mnist.train.images, y_: mnist.train.labels})
+    print "###################################################"
+    print "step %d, training err %g"%(i, 1-acuracy)
+    list_iteration.append(i)
+    list_err_test.append(1-acuracy)
 
 acuracy_test = sess.run(accuracy, feed_dict={x: mnist.test.images, y_: mnist.test.labels})
 print "test accuracy %g"%(acuracy)

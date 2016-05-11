@@ -87,8 +87,8 @@ if __name__ == "__main__":
 	print "__________________Influence du nombre des arbres sur moyenne et variance__________________"
 
 	print "Random Forest Classifier :"
-	listMoyennes = []
-	listVariances = []
+	listmoyennes = []
+	listvariances = []
 	for arbre in range(5,25) :
 		listTaux = []
 		for stat in range(30) :
@@ -101,20 +101,20 @@ if __name__ == "__main__":
 					nbError = nbError + 1
 				tauxErr = float(nbError)/float(len(Y_test))
 				listTaux.append(tauxErr)
-		listMoyennes.append((arbre,np.mean(listTaux)))
-		listVariances.append((arbre,np.var(listTaux)))
+		listmoyennes.append((arbre,np.mean(listTaux)))
+		listvariances.append((arbre,np.var(listTaux)))
 
-	for (arbre,moyenne) in listMoyennes :
-		print "La MOYENNE des erreurs pour un nombre d'arbre de  ",arbre," est de ",moyenne
+	for (arbre,moyenne) in listmoyennes :
+		print "La moyenne des erreurs pour un nombre d'arbre de  ",arbre," est de ",moyenne
 
-	for (arbre,variance) in listVariances :
-		print "La VARIANCE des erreur pour un nombre d'arbre de ",arbre," est de ",variance
+	for (arbre,variance) in listvariances :
+		print "La variance des erreur pour un nombre d'arbre de ",arbre," est de ",variance
 
 
 	print "Extremely Randomized Forest Classifier :"
 
-	listMoyennes = []
-	listVariances = []
+	listmoyennes = []
+	listvariances = []
 	for arbre in range(5,20) :
 		listTaux = []
 		for stat in range(30) :
@@ -127,14 +127,14 @@ if __name__ == "__main__":
 					nbError = nbError + 1
 			tauxErr = float(nbError)/float(len(Y_test))
 			listTaux.append(tauxErr)
-		listMoyennes.append((arbre,np.mean(listTaux)))
-		listVariances.append((arbre,np.var(listTaux)))
+		listmoyennes.append((arbre,np.mean(listTaux)))
+		listvariances.append((arbre,np.var(listTaux)))
 
-	for (arbre,moyenne) in listMoyennes :
-		print "La MOYENNE des erreur pour un nombre d arbre de  ",arbre," = ",moyenne
+	for (arbre,moyenne) in listmoyennes :
+		print "La moyenne des erreur pour un nombre d arbre de  ",arbre," = ",moyenne
 	   
-	for (arbre,variance) in listVariances :
-		print "La VARIANCE des erreur pour un nombre d arbre de ",arbre," = ",variance
+	for (arbre,variance) in listvariances :
+		print "La variance des erreur pour un nombre d arbre de ",arbre," = ",variance
 
 	#print( clf.predict(X_test))
 
